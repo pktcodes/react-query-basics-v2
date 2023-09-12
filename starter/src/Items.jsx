@@ -6,7 +6,7 @@ import SingleItem from './SingleItem';
 const Items = () => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ['tasks'],
-    queryFn: () => customFetch.get('/something'),
+    queryFn: () => customFetch.get('/'),
 
     /* Alternative - JSX return would be data.taskList*/
     // queryFn: async () => {
@@ -28,6 +28,7 @@ const Items = () => {
     return <p style={styles}>There was an error...</p>;
   }
 
+  /* Axios Error */
   // if (error) {
   //   return <p style={styles}>{error.response.data}</p>;
   // }
