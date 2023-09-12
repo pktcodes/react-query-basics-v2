@@ -4,24 +4,33 @@ import customFetch from './utils';
 import SingleItem from './SingleItem';
 
 const Items = () => {
-  const { isLoading, data } = useQuery({
+  const { isLoading, data, isError, error } = useQuery({
     queryKey: ['tasks'],
-    queryFn: () => customFetch.get('/'),
+    queryFn: () => customFetch.get('/something'),
+
+    /* Alternative - JSX return would be data.taskList*/
+    // queryFn: async () => {
+    //   const { data } = await customFetch.get('/');
+    //   return data;
+    // },
   });
 
+  const styles = {
+    marginTop: '2rem',
+    textAlign: 'center',
+  };
+
   if (isLoading) {
-    return (
-      <p
-        style={{
-          marginTop: '2rem',
-          textAlign: 'center',
-          textTransform: 'capitalize',
-        }}
-      >
-        loading...
-      </p>
-    );
+    return <p style={styles}>Loading...</p>;
   }
+
+  if (isError) {
+    return <p style={styles}>There was an error...</p>;
+  }
+
+  // if (error) {
+  //   return <p style={styles}>{error.response.data}</p>;
+  // }
 
   return (
     <div className="items">
