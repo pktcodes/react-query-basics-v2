@@ -1,18 +1,16 @@
+# React Query - Task Bud 📝
+
 ## Steps
 
 #### Server
 
 Open server directory.
 
-- run "npm install" and "npm start"
+- run `npm install` and `npm start`
 
-#### Node Course
+#### Starter - Client
 
-[Node Tutorial and Projects Course](https://www.udemy.com/course/nodejs-tutorial-and-projects-course/?referralCode=E94792BEAE9ADD204BC7)
-
-#### Starter
-
-- run "npm install" and "npm run dev"
+- run `npm install` and `npm run dev`
 - Grocery Bud structure
 
 #### Explore Setup
@@ -21,8 +19,8 @@ Explore files and folders
 
 #### Custom Axios Instance
 
-Create utils.js and setup custom axios instance with
-following base url:'http://localhost:5000/api/tasks'
+Create `utils.js` and setup custom axios instance with
+following base url: http://localhost:5000/api/tasks
 
 #### HTTP Methods
 
@@ -202,9 +200,6 @@ export default Items;
 
 Test API endpoints directly in VS CODE
 
-#### Test Create Task (Challenge)
-
-- check the docs and test endpoint in Thunder Client
 
 #### Create Task
 
@@ -237,13 +232,6 @@ const { mutate: createTask, isLoading } = useMutation({
 });
 ```
 
-#### Edit Task (Challenge)
+---
 
-- check the docs and test endpoint in Thunder Client
-- setup the functionality
-  hints : Item.jsx, look for edit log, and two arguments in mutationFn
-
-#### Delete Task (Challenge)
-
-- check the docs and test endpoint in Thunder Client
-- setup the functionality
+_Note: I have developed this project ~ [16] as part of React 18 Tutorial and Projects Course (2023) taught by John Smilga._
