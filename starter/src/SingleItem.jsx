@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 const SingleItem = ({ item }) => {
   const queryClient = useQueryClient();
 
+  /* Edit Task */
   const { mutate: editTask } = useMutation({
     mutationFn: ({ taskId, isDone }) => {
       return customFetch.patch(`/${taskId}`, { isDone });
@@ -12,6 +13,17 @@ const SingleItem = ({ item }) => {
     onSuccess: ({ data }) => {
       queryClient.invalidateQueries({ queryKey: [`tasks`] });
       toast.success(data.msg);
+    },
+  });
+
+  /* Delete Task */
+  const { mutate: deleteTask, isLoading } = useMutation({
+    mutationFn: (taskId) => {
+      return customFetch.delete(`/${taskId}`);
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: [`tasks`] });
+      toast.success('task deleted');
     },
   });
 
@@ -35,7 +47,8 @@ const SingleItem = ({ item }) => {
       <button
         className="btn remove-btn"
         type="button"
-        onClick={() => console.log('delete task')}
+        disabled={isLoading}
+        onClick={() => deleteTask(item.id)}
       >
         delete
       </button>
