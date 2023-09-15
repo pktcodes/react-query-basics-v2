@@ -1,19 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
-import customFetch from './utils';
+import { useFetchTasks } from './reactQueryCustomHooks';
 
 import SingleItem from './SingleItem';
 
 const Items = () => {
-  const { isLoading, data, isError, error } = useQuery({
-    queryKey: ['tasks'],
-    queryFn: () => customFetch.get('/'),
-
-    /* Alternative - JSX return would be data.taskList*/
-    // queryFn: async () => {
-    //   const { data } = await customFetch.get('/');
-    //   return data;
-    // },
-  });
+  const { isLoading, isError, data } = useFetchTasks();
 
   const styles = {
     marginTop: '2rem',
@@ -28,17 +18,13 @@ const Items = () => {
     return <p style={styles}>There was an error...</p>;
   }
 
-  /* Axios Error */
-  // if (error) {
-  //   return <p style={styles}>{error.response.data}</p>;
-  // }
-
   return (
     <div className="items">
-      {data.data.taskList.map((item) => {
+      {data.taskList.map((item) => {
         return <SingleItem key={item.id} item={item} />;
       })}
     </div>
   );
 };
+
 export default Items;
