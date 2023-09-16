@@ -13,6 +13,8 @@ Open server directory.
 - run `npm install` and `npm run dev`
 - Grocery Bud structure
 
+![Task Bud](https://github.com/praveen-1995/react-query-basics-v2/assets/44305655/318a1874-937c-4822-86ea-517a89b324ff)
+
 #### Explore Setup
 
 Explore files and folders
